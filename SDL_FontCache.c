@@ -594,9 +594,9 @@ void U8_strdel(char* string, int position)
     {
         if(position == 0)
         {
-            int chars_to_erase = U8_charsize(string);
-            int remaining_bytes = strlen(string) + 1;
-            memmove(string, string + chars_to_erase, remaining_bytes);
+            const int bytes_to_erase = U8_charsize(string);
+            const int remaining_bytes = (strlen(string) - bytes_to_erase) + 1;
+            memmove(string, string + bytes_to_erase, remaining_bytes);
             break;
         }
 
